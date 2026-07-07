@@ -24,7 +24,7 @@ Built with:
 AI-Proposal-Generator
 │
 ├── client
-└── server
+└── serverg
 ```
 
 ## Features (Planned)
