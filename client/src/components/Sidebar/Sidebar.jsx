@@ -1,66 +1,131 @@
-import { NavLink } from "react-router-dom";
+import {
+    FaHome,
+    FaFileAlt,
+    FaFileInvoice,
+    FaBuilding,
+    FaClipboardList,
+    FaRobot,
+    FaCog,
+    FaTimes
+} from "react-icons/fa";
 
-import { FaHome, FaFileAlt, FaRobot, FaTimes, FaCog } from "react-icons/fa";
-
-export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
-  const links = [
+const menu = [
     {
-      name: "Dashboard",
-      path: "/dashboard",
-      icon: <FaHome />,
+        name: "Dashboard",
+        icon: <FaHome />
     },
-
     {
-      name: "Proposal",
-      path: "/proposal",
-      icon: <FaFileAlt />,
+        name: "Proposals",
+        icon: <FaFileAlt />
     },
-
     {
-      name: "AI History",
-      path: "/history",
-      icon: <FaRobot />,
+        name: "Quotations",
+        icon: <FaClipboardList />
     },
-
     {
-      name: "Settings",
-      path: "/settings",
-      icon: <FaCog />,
+        name: "Invoices",
+        icon: <FaFileInvoice />
     },
-  ];
+    {
+        name: "Company Profile",
+        icon: <FaBuilding />
+    },
+    {
+        name: "AI History",
+        icon: <FaRobot />
+    },
+    {
+        name: "Settings",
+        icon: <FaCog />
+    }
+];
 
-  return (
-    <>
-      <div
-        className={`fixed top-0 left-0 h-full w-64 bg-slate-900 text-white z-50 transform transition-transform duration-300
+export default function Sidebar({
+    sidebarOpen,
+    setSidebarOpen
+}) {
 
-${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
+    return (
 
-lg:translate-x-0 lg:block`}
-      >
-        <div className="flex justify-between items-center p-6">
-          <h1 className="text-2xl font-bold">AnalytIQ</h1>
+        <>
 
-          <button className="lg:hidden" onClick={() => setSidebarOpen(false)}>
-            <FaTimes />
-          </button>
-        </div>
+            {/* Overlay */}
 
-        <nav>
-          {links.map((link) => (
-            <NavLink
-              key={link.name}
-              to={link.path}
-              onClick={() => setSidebarOpen(false)}
-              className="flex items-center gap-3 px-6 py-4 hover:bg-slate-800"
+            {
+                sidebarOpen && (
+
+                    <div
+                        onClick={() => setSidebarOpen(false)}
+                        className="fixed inset-0 bg-black/40 z-30 lg:hidden"
+                    />
+
+                )
+            }
+
+            <aside
+
+                className={`fixed top-0 left-0 h-full w-72 bg-slate-900 text-white z-40 transform transition-transform duration-300
+
+                ${sidebarOpen
+                        ? "translate-x-0"
+                        : "-translate-x-full"
+                    }
+
+                lg:translate-x-0`}
+
             >
-              {link.icon}
 
-              {link.name}
-            </NavLink>
-          ))}
-        </nav>
-      </div>
-    </>
-  );
+                <div className="flex justify-between items-center p-6 border-b border-slate-700">
+
+                    <h1 className="text-2xl font-bold">
+
+                        AnalytIQ
+
+                    </h1>
+
+                    <button
+
+                        className="lg:hidden"
+
+                        onClick={() => setSidebarOpen(false)}
+
+                    >
+
+                        <FaTimes size={22} />
+
+                    </button>
+
+                </div>
+
+                <nav className="mt-6">
+
+                    {
+
+                        menu.map((item) => (
+
+                            <button
+
+                                key={item.name}
+
+                                className="w-full flex items-center gap-4 px-6 py-4 hover:bg-slate-800 transition"
+
+                            >
+
+                                {item.icon}
+
+                                {item.name}
+
+                            </button>
+
+                        ))
+
+                    }
+
+                </nav>
+
+            </aside>
+
+        </>
+
+    );
 }

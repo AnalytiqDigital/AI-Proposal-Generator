@@ -1,33 +1,53 @@
-import Card from "../Card/Card";
+import Card from "@/components/Card/Card";
 
 export default function StatCard({
-  title,
-  value,
-  icon,
-}) {
-  return (
-    <Card>
 
-      <div className="flex items-center justify-between">
+    title,
 
-        <div>
+    value,
 
-          <p className="text-gray-500 text-sm">
-            {title}
-          </p>
+    icon
 
-          <h2 className="text-3xl font-bold mt-2">
-            {value}
-          </h2>
+}){
 
-        </div>
+    return(
 
-        <div className="text-4xl text-blue-600">
-          {icon}
-        </div>
+        <Card>
 
-      </div>
+            <div className="flex justify-between items-start">
 
-    </Card>
-  );
+                <div>
+
+                    <p className="text-sm text-slate-500">
+
+                        {title}
+
+                    </p>
+
+                    <h2 className="text-3xl font-bold mt-3">
+
+                        {value}
+
+                    </h2>
+
+                    <p className="text-green-600 text-sm mt-2">
+
+                        ↑ 12% this month
+
+                    </p>
+
+                </div>
+
+                <div className="text-3xl text-blue-600">
+
+                    {icon}
+
+                </div>
+
+            </div>
+
+        </Card>
+
+    )
+
 }

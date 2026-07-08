@@ -11,7 +11,7 @@ export default function Footer() {
             </div>
             <div>
               <p className="font-semibold text-white text-lg tracking-tight">AnalytIQ</p>
-              <p className="text-xs text-slate-500">AI Proposal & Invoice Generator</p>
+              {/* <p className="text-x text-slate-500">AI Proposal & Invoice Generator</p> */}
             </div>
           </div>
 
