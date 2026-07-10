@@ -64,7 +64,7 @@ export default function Sidebar({
 
             <aside
 
-                className={`fixed top-0 left-0 h-full w-72 bg-slate-900 text-white z-40 transform transition-transform duration-300
+                className={`fixed top-0 left-0 h-full w-64 bg-slate-900 text-white z-40 transform transition-transform duration-300
 
                 ${sidebarOpen
                         ? "translate-x-0"
