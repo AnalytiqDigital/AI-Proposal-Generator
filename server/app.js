@@ -1,7 +1,8 @@
 const express = require("express");
 const cors = require("cors");
-require("dotenv").config();
-const User = require("./models/User");
+
+const authRoutes = require("./routes/authRoutes");
+
 
 const app = express();
 
@@ -10,27 +11,15 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Initialize DB connection
-const connectDB = require('./config/db');
-connectDB();
-
-// Test Route
+// Health Check
 app.get("/", (req, res) => {
-    res.status(200).json({
-        success: true,
-        message: "Welcome to AnalytIQ ProposalAI API 🚀"
-    });
-});
-
-
-
-
-app.get("/test-user", async (req, res) => {
-  const count = await User.countDocuments();
   res.json({
-    message: "User model is working!",
-    totalUsers: count,
+    success: true,
+    message: "AnalytIQ ProposalAI API Running 🚀",
   });
 });
+
+// Routes
+app.use("/api/auth", authRoutes);
 
 module.exports = app;
